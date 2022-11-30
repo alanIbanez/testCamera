@@ -15,7 +15,14 @@ export class AppComponent {
     try {
       navigator.mediaDevices.getUserMedia({
         audio: false,
-        video: true
+        video: {
+          width: 500,
+          height: 500,
+          facingMode: {
+            //Use the back camera
+            exact: 'environment'
+          }
+        }
       }).then((res) => {
         this.status = 'Accesiendo a la camara'
         this.stream = res;
